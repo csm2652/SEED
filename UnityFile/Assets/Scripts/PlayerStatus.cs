@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour {
     public float playerHp = 100.0f;
-    public float Attack = 10.0f;
-
-    private ArrayList EnemyInRange;
-    private GameObject ThisController;
-
-    void isAttack(GameObject Enemy) {
-       
+    public float pAttack = 10.0f;
+    public bool isDie;
+   
+    public float getPlayerHp() {
+        return playerHp;
     }
-
-    void OnTriggerEnter (Collider thiscoll) {
-        if(thiscoll.gameObject.tag == "Unit") {
-
-        }
+    public float getPlayerAtk() {
+        return pAttack;
     }
+    public bool getIsDie() {
+        return isDie;
+    }
+    // Use this for initialization
+    void Awake () {
+        isDie = false;
+        playerHp = 100.0f;
+        pAttack = 10.0f;
+    //ThisController = gameObject.transform.parent.gameObject.GetComponent<Un>;
+}
+	void Update() {
 
-	// Use this for initialization
-	void Start () {
-        //ThisController = gameObject.transform.parent.gameObject.GetComponent<Un>;
-	}
-	
+    }
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () {
+
 	}
 }

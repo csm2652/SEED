@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour {
     }
 
     void FixedUpdate () { 
+       
         Vector3 diff = destTr.position - tr.transform.position;
         anim.SetBool("iswalking", false);
         if (diff.magnitude > thresholdDiff) {
