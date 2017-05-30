@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tile_ground" tilewidth="32" tileheight="32" tilecount="64" columns="8">
+  <image source="tile_BG_alpha2.png" width="256" height="256"/>
+  <tile id="23">
+   <objectgroup draworder="index">
+    <object id="3" x="-0.0869565" y="-0.0434783" width="32.087" height="32.0435"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzd1L0KgDAMRtEW8WdxVFDpopP6/u9nhASKFKT9pFGHM4Zrq9EaYyygJQWgBvWkAWj3kbt/4v5LUEcqwNv7A5mAvsyn9leyk5Fdn+WuL/OpfcdmtkT2ZR7tn+fY+Cw5+7LnzhPTlz1Hv3//n6O1f6FdyNlPuf8/9bXff8jX+weUJBCO
+  </data>
+ </layer>
+ <layer name="ch_test" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAfBkJAAAB
+  </data>
+ </layer>
+ <layer name="col" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJyTYGBgkBjFA4ZHweAGlMYTtfSTm2ZG7adOPhvNswPv/5Fu/yigPgAAUcgMMQ==
+  </data>
+ </layer>
+</map>
