@@ -122,7 +122,8 @@ public class PlayerAttack : MonoBehaviour {
                         if (225 < betweenEnemyAngle && 315 >= betweenEnemyAngle)
                             anim.SetBool("Front_Attack", true);
                         enemy.getDamaged(myAtk);
-                        //why attack motion is weird? -> Vector2.Angle return the degree of two vector based on (0,0), We want the angle based on Character position not ZeroPoint
+                        //why attack motion is weird? -> Vector2.Angle return the degree of two vector based on (0,0), We want the angle based on Character position not ZeroPoint  
+
                     }
                 }
             }
