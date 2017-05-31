@@ -72,23 +72,6 @@ public class DestController : MonoBehaviour {
                -Camera.main.transform.position.z));
             tr.position = mousePos;
         }
-        /*if (target == this.gameObject) {
-            mousePos = Camera.main.ScreenToWorldPoint
-               (new Vector3(Input.mousePosition.x,
-               Input.mousePosition.y,
-               -Camera.main.transform.position.z));
-            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log("mousepos" + mousePos.x + " " + mousePos.y);
-            /*if (Physics.Raycast(ray, out hitInfo, 100000f))
-            {
-                Debug.Log("hit point: " + hitPosition);
-                Debug.Log("hit object: " + hitInfo.collider.name);
-                hitPosition = hitInfo.point;
-
-            }
-           
-            tr.position = mousePos;
-        }*/
     }
 
     // Update is called once per frame
@@ -101,43 +84,10 @@ public class DestController : MonoBehaviour {
                 isMoveState = true;
             }
 
-        }/*
-            mousePos = Camera.main.ScreenToWorldPoint
-               (new Vector3(Input.mousePosition.x,
-               Input.mousePosition.y,
-               -Camera.main.transform.position.z));
-            if ((tr.position - mousePos).magnitude < inputTreshold 
-                || (myPlayerTr.position - mousePos).magnitude < inputTreshold*3) {
-                isMoveState = true;
-            }
-        }*/
+        }
         if (Input.GetKeyUp(KeyCode.Mouse0)) {
             isMoveState = false;
         }
-        /*  
-          if (Input.GetMouseButton(0) && isMoveState)
-          {
-              mousePos = Camera.main.ScreenToWorldPoint
-                  (new Vector3(Input.mousePosition.x,
-                  Input.mousePosition.y,
-                  -Camera.main.transform.position.z));
-              //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-              Debug.Log("mousepos" + mousePos.x + " " + mousePos.y);
-              /*if (Physics.Raycast(ray, out hitInfo, 100000f))
-              {
-                  Debug.Log("hit point: " + hitPosition);
-                  Debug.Log("hit object: " + hitInfo.collider.name);
-                  hitPosition = hitInfo.point;
-
-              }
-
-              tr.position = mousePos;
-          }
-          else if (Input.GetMouseButtonUp(0)) {
-
-          }
-         */
-
     }
 
 }

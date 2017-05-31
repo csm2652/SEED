@@ -1,0 +1,67 @@
+# =============== #
+
+# Unity generated #
+
+# =============== #
+
+UnityFile/Temp/
+
+UnityFile/Obj/
+
+UnityFile/UnityGenerated/
+
+UnityFile/Library/
+
+UnityFile/ios/
+
+UnityFile/bin/
+
+# ===================================== #
+
+# Visual Studio / MonoDevelop generated #
+
+# ===================================== #
+
+UnityFile/ExportedObj/
+
+UnityFile/*.svd
+
+UnityFile/*.userprefs
+
+UnityFile/*.csproj
+
+UnityFile/*.pidb
+
+UnityFile/*.suo
+
+UnityFile/*.sln
+
+UnityFile/*.user
+
+UnityFile/*.unityproj
+
+UnityFile/*.booproj
+
+
+
+# ============ #
+
+# OS generated #
+
+# ============ #
+
+UnityFile/.DS_Store
+
+UnityFile/.DS_Store?
+
+UnityFile/._*
+
+UnityFile/.Spotlight-V100
+
+UnityFile/.Trashes
+
+UnityFile/Icon?
+
+UnityFile/ehthumbs.db
+
+Thumbs.db

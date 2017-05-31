@@ -6,10 +6,7 @@ public class EnemyStatus : MonoBehaviour {
     public float enemyHp = 100.0f;
     public float eAttack = 10.0f;
     public bool isDie = false;
-    public float distanceWithPlayer1;
-    public float distanceWithPlayer2;
-    public float distanceWithPlayer3;
-    public float distanceWithPlayer4;
+    public float[] distanceWithPlayers = new float[GameManager.playerNum];
 
     private Vector3 thisPos;
     // Use this for initialization
@@ -18,11 +15,8 @@ public class EnemyStatus : MonoBehaviour {
     }
     void Awake() {
         thisPos = GetComponent<Transform>().position;
-        //GameManager.players.Length
-        distanceWithPlayer(GameObject.Find("PlayerSp1").transform.position,
-            GameObject.Find("PlayerSp2").transform.position,
-            GameObject.Find("PlayerSp3").transform.position,
-            GameObject.Find("PlayerSp4").transform.position);
+        
+        distanceWithPlayer();
     }
     void Start () {
 		
@@ -31,8 +25,7 @@ public class EnemyStatus : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GetComponent<SpriteRenderer>().sortingOrder = -(int)(GetComponent<Transform>().position.y * 10);
-        Debug.Log(distanceWithPlayer1);
-        Debug.Log(distanceWithPlayer2);
+       // Debug.Log(distanceWithPlayers[1]);
     }
 
     public void getDamaged(float dmg) {
@@ -42,11 +35,12 @@ public class EnemyStatus : MonoBehaviour {
             Destroy(this.gameObject);
          }
     }
-    public void distanceWithPlayer(Vector3 distance1,Vector3 distance2, Vector3 distance3, Vector3 distance4) {
-        distanceWithPlayer1 = Vector3.Distance(distance1, thisPos);
-        distanceWithPlayer2 = Vector3.Distance(distance2, thisPos);
-        distanceWithPlayer3 = Vector3.Distance(distance3, thisPos);
-        distanceWithPlayer4 = Vector3.Distance(distance4, thisPos);
+    public void distanceWithPlayer() {
+        if (GameManager.players != null) {
+            for (int i = 0; i < GameManager.players.Count; i++) {
+                distanceWithPlayers[i] = Vector3.Distance(GameManager.players[i].transform.position, thisPos);
+            }
+        }
     }
 
     void OnDestroy() {
