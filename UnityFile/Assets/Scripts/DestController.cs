@@ -71,6 +71,7 @@ public class DestController : MonoBehaviour {
                Input.mousePosition.y,
                -Camera.main.transform.position.z));
             tr.position = mousePos;
+            Camera.main.GetComponent<CameraController>().updatePos(tr);
         }
     }
 

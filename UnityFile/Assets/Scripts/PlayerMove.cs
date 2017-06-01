@@ -36,4 +36,9 @@ public class PlayerMove : MonoBehaviour {
             anim.SetFloat("input_y", diff.normalized.y);
         }
     }
+
+    public void focusPlayer() {
+        Camera.main.GetComponent<Transform>().position = tr.position + new Vector3(0, 0, -10);
+        
+    }
 }

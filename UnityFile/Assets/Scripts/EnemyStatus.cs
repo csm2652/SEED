@@ -38,7 +38,7 @@ public class EnemyStatus : MonoBehaviour {
     public void distanceWithPlayer() {
         if (GameManager.players != null) {
             for (int i = 0; i < GameManager.players.Count; i++) {
-                distanceWithPlayers[i] = Vector3.Distance(GameManager.players[i].transform.position, thisPos);
+                //distanceWithPlayers[i] = Vector3.Distance(GameManager.players[i].transform.position, thisPos);
             }
         }
     }
