@@ -1,60 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="tile_ground" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="tile_BG_alpha2.png" width="256" height="256"/>
   <tile id="23">
    <objectgroup draworder="index">
     <object id="3" x="-0.0869565" y="-0.0434783" width="32.087" height="32.0435"/>
-    <object id="5" x="0" y="0" width="32" height="32"/>
    </objectgroup>
   </tile>
  </tileset>
- <tileset firstgid="65" name="lava" tilewidth="32" tileheight="32" tilecount="18" columns="3">
-  <image source="../LPC Base Assets/LPC Base Assets/tiles/lava.png" width="96" height="192"/>
-  <tile id="10">
-   <objectgroup draworder="index">
-    <object id="1" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
- </tileset>
- <layer name="Tile Layer 1" width="64" height="64">
+ <layer name="Tile Layer 1" width="32" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt1k0OgjAQBtCyMJ5BjQtwhdz/fmICSdNQQE3k7y3egoYuvnZm0iKEUBzYmUNbuv6WdoIRl9ZtYO2aSP8Z278ldatJslatZ6KZ2L90jm/dO1XnEa2lcvvLMF0na9XPyTq6509maZ8/Pr+lM/1SB7l7Hju/Mkz3ydrFb4b399AMzNX3nD7ZgniW9/0wZw7uJX88y3MzcCjfXt5ccb4jvinj/gcAAAAAAAAAAAAAAPiXF+beWDQ=
+   eJxjZGBgYKQA8wIxMwWYnUIsBsQcFOCBtp+SsKdG+OuTiVmhWBSI2SjATGRiNTrZLwnE0hTYD9NPrv2aQKwNNUcKyS3E2g/TT679slCsCMRKQKxMov0w/ZTaD/KHFtQv9LRfFYplkTAp9sPyOan2ywGxAhZ3qJJoP7npH2S+BpoYcl6gtf16QGyAJkZO+FOa/weT/fSM/8FS/tLafgAAOxR2
   </data>
  </layer>
- <layer name="Copy of Tile Layer 1" width="64" height="64">
+ <layer name="ch_test" width="32" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt1DEOgzAMBdBco606FKaW+9+vIIGUpiRhxOg96S8RHowTpwQA/25zHjtn9yLlN636SN5zpvTb6zDnU2Tq1Ef1XDOsGbOzMrX6V+rfk7Nb5tiac83Wf/7/IurNuWXpv/dOotnbgbX7feSdRJDv8u09HNmDV+k/3+W1HRi5v56r9wcAAAAAAAAAAAAAAHBGX1T0Czc=
+   eJztwQEBAAAAgiD/r25IQAEAfBkJAAAB
   </data>
  </layer>
- <layer name="col" width="64" height="64" visible="0">
+ <layer name="col" width="32" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt1DEOgCAQBECewf9famtB4YkacGeTrSCB0Ry9tdZVw5sWfv4r/tF6ZYZW/b5V/903hH/NWZvxz5yzm3+0/+2zvsjsnSpz8Bf/eS9/7R1cLbP+3bPjP3sy/Pz8/Pz8/Hnh5+fn5+fnzws/Pz8/Pz9/Xvj5+fn5+fnzws/Pz8/Pz58Xfn5+fn5+ze0BFgY8qQ==
-  </data>
- </layer>
- <layer name="Copy of col" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJztzzENAAAIBDH84d8PCxsCGL5NTsBVAQAAXL2l8p/9DwAAAAAAAAAAAAAA8GEAmlsBww==
-  </data>
- </layer>
- <layer name="Copy of Copy of col" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJztzzENAAAIBDH84d8PDmBj+TY5AVcFAABceimB/+x/AAAAAAAAAAAAAAAAfgycRgYo
-  </data>
- </layer>
- <layer name="Copy of Copy of Copy of col" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJztz6ERACAMBMH0R//9YMBAYhFkd+bNu4sAgNtYy75zP6pa9ffo37p0Vrr3AwAAAAAAAAAAAAAAALw2AStmCo0=
-  </data>
- </layer>
- <layer name="Copy of Copy of Copy of Copy of col" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJztz7EJADAMBDHv5/33CYF07oK7l+AGuCoA2NevVP5nSdL/L//+k/8BAAAAAAAAAAAAAADg1wGPAwef
-  </data>
- </layer>
- <layer name="Copy of Copy of Copy of Copy of Copy of col" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJztwwEJAAAMA6D1W/8+rzG4gk1SfRoAAAAAAAAAAAAAAAAAAGDFAR6TOEE=
+   eJyTYGBgkBjFA4ZHweAGlMYTtfSTm2ZG7adOPhvNswPv/5Fu/yigPgAAUcgMMQ==
   </data>
  </layer>
 </map>
