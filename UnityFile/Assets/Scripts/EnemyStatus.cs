@@ -30,7 +30,7 @@ public class EnemyStatus : MonoBehaviour {
 
     public void getDamaged(float dmg) {
         enemyHp = enemyHp - dmg;
-        Debug.Log("hp: " + enemyHp);
+        Debug.Log(this.name + "hp: " + enemyHp);
         if (enemyHp <= 0.0f) {
             Destroy(this.gameObject);
          }

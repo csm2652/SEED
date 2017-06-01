@@ -9,15 +9,18 @@ public class PlayerAttack : MonoBehaviour {
     private bool enemyIsDie = false;
     private GameObject target=null;
     private PlayerStatus myStatus;
-    private float reach = 0.5f;
+   
+
     private Animator anim;
+    private float betweenEnemyTan;
     private float betweenEnemyAngle;
     private Vector2 myAnglePos;
     private Vector2 enemyAnglePos;
 
+    public float AttackTime = 0.5f;
     public float myAtk =1;
     public float myHp = 100;
-  
+    public float reach = 0.5f;
     public float minDistace=10000f;
 
     
@@ -61,7 +64,7 @@ public class PlayerAttack : MonoBehaviour {
         while (!isDie) {
             attack();
             updateList();
-           yield return new WaitForSeconds(0.5f);
+           yield return new WaitForSeconds(AttackTime);
         }
         
     }
@@ -98,29 +101,39 @@ public class PlayerAttack : MonoBehaviour {
                         EnemyStatus enemy = target.GetComponent<EnemyStatus>();
                         /*locationOfEnemy = ((target.transform.position - myPos.position).magnitude /
                             (target.transform.position - myPos.position).y);*/
-                        
+
                         myAnglePos = new Vector2(myPos.position.x, myPos.position.y);
                         enemyAnglePos = new Vector2(target.transform.position.x, target.transform.position.y);
-                        betweenEnemyAngle = Vector2.Angle(myAnglePos,enemyAnglePos) * Mathf.Rad2Deg;
+                        Debug.Log("myPos:  " + myPos.position + "enemyPos: " + enemyAnglePos);
+                        float reverse = 1/(enemyAnglePos.x - myAnglePos.x);
+                        betweenEnemyTan = (enemyAnglePos.y - myAnglePos.y) * reverse;
+                        Debug.Log("angle: " + betweenEnemyTan);
+                      
+                      
                         Vector3 cross = Vector3.Cross(myAnglePos, enemyAnglePos);
-                       
-                        if (cross.z > 0)
-                            betweenEnemyAngle = 360 - betweenEnemyAngle;
+                          
                         anim.SetBool("Front_Attack", false);
                         anim.SetBool("Back_Attack", false);
                         anim.SetBool("Right_Attack", false);
                         anim.SetBool("Left_Attack", false);
-                        Debug.Log("angle" + betweenEnemyAngle);
-                        Debug.Log("myPos:  " + myPos.position + "enemyPos: " + enemyAnglePos);
-                        if ( (315 < betweenEnemyAngle && 360 >= betweenEnemyAngle) || 
-                            (0 <= betweenEnemyAngle && 45 >= betweenEnemyAngle))
-                            anim.SetBool("Right_Attack", true);
-                        if (45 < betweenEnemyAngle && 135 >= betweenEnemyAngle)
-                            anim.SetBool("Back_Attack", true);
-                        if (135 < betweenEnemyAngle && 225 >= betweenEnemyAngle)
-                            anim.SetBool("Left_Attack", true);
-                        if (225 < betweenEnemyAngle && 315 >= betweenEnemyAngle)
-                            anim.SetBool("Front_Attack", true);
+
+                        if (cross.z < 0) {
+                            if (0 <= betweenEnemyTan && betweenEnemyTan <= 1)
+                                anim.SetBool("Right_Attack", true);
+                            if (betweenEnemyTan <= -1 || betweenEnemyTan > 1)
+                                anim.SetBool("Front_Attack", true);
+                            if (-1 <= betweenEnemyTan && betweenEnemyTan < 0)
+                                anim.SetBool("Left_Attack", true);
+                        } 
+                        else {
+                            if (-1 < betweenEnemyTan &&  betweenEnemyTan <= 0 )
+                                anim.SetBool("Right_Attack", true);
+                            if (1 < betweenEnemyTan || -1 > betweenEnemyTan)
+                                anim.SetBool("Back_Attack", true);
+                         
+                            if(0 < betweenEnemyTan && betweenEnemyTan <= 1)
+                                anim.SetBool("Left_Attack", true);
+                        }
                         enemy.getDamaged(myAtk);
                         //why attack motion is weird? -> Vector2.Angle return the degree of two vector based on (0,0), We want the angle based on Character position not ZeroPoint  
 
