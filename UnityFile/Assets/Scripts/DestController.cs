@@ -16,7 +16,7 @@ public class DestController : MonoBehaviour {
     public GameObject myPlayer;
     private Transform myPlayerTr;
     private Collider myPlayerCol;
-
+	private int myPlayerNum;
     //private float inputTreshold = 0.1f;
 
     //private GameObject target;
@@ -56,7 +56,8 @@ public class DestController : MonoBehaviour {
         myPlayerTr = myPlayer.GetComponent<Transform>();
         myPlayerCol = myPlayer.GetComponent<Collider>();
         myCol = GetComponent<Collider>();
-
+	myPlayerNum = myPlayer.GetComponentInParent<PlayerStatus>().charterIndex;
+		Debug.Log (myPlayerNum);
         isMoveState = false;
 
     }
@@ -77,10 +78,12 @@ public class DestController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+	if(GameManager.playerDie[myPlayerNum]){
+			Destroy (this.gameObject);
+	}
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Physics.Raycast(pos, -Vector3.back, out hitInfo);
-            Debug.Log(hitInfo.collider);
             if (hitInfo.collider == myCol || hitInfo.collider == myPlayerCol) {
                 isMoveState = true;
             }

@@ -29,15 +29,11 @@ public class Character_Controller : MonoBehaviour {
         {
             mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);//포시션을 담는 어레이가 있어서 그 어레이 안에 값을 순차적 참조해서 타겟포인트까지 따라간다?
-            Debug.Log("mousepos" + mousePos.x + " " + mousePos.y);
             if (Physics.Raycast(ray, out hitInfo, 100000f))
             {
-                Debug.Log("hit point: " + hitPosition);
-                Debug.Log("hit object: " + hitInfo.collider.name);
                 hitPosition = hitInfo.point;
                 isMoveState = true;
                 anim.SetBool("iswalking", true);
-
             }
             else
                 anim.SetBool("iswalking", false);

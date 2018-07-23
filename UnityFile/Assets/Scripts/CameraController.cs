@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour {
         topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.9f)).y;
         leftFullBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0)).x;
         rightFullBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0)).x;
-        bottomFullBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0)).y;
+        bottomFullBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.9f)).y;
         topFullBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1)).y;
     }
 

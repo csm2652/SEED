@@ -2,25 +2,65 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="tile_ground" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="tile_BG_alpha2.png" width="256" height="256"/>
+  <terraintypes>
+   <terrain name="grass" tile="-1"/>
+  </terraintypes>
   <tile id="23">
    <objectgroup draworder="index">
     <object id="3" x="-0.0869565" y="-0.0434783" width="32.087" height="32.0435"/>
    </objectgroup>
   </tile>
+  <tile id="29" terrain="0,0,0,0"/>
+  <tile id="30" terrain="0,0,0,0"/>
+  <tile id="31" terrain="0,0,0,0"/>
+  <tile id="37" terrain="0,0,0,0"/>
+  <tile id="39" terrain="0,0,0,0"/>
+  <tile id="45" terrain="0,0,0,0"/>
+  <tile id="46" terrain="0,0,0,0"/>
+  <tile id="47" terrain="0,0,0,0"/>
  </tileset>
+ <tileset firstgid="65" name="lava" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../LPC Base Assets/LPC Base Assets/tiles/lava.png" width="96" height="192"/>
+  <tile id="10">
+   <objectgroup draworder="index" opacity="0" offsetx="32" offsety="32">
+    <object id="1" x="-32" y="-32" width="32" height="32"/>
+    <object id="2" x="9.81818" y="6.90909" width="4.54545" height="4"/>
+    <object id="3" x="16.3636" y="3.09091" width="9.27273" height="25.2727"/>
+    <object id="4" x="-3.09091" y="6" width="31.2727" height="24.3636"/>
+    <object id="5" x="2.90909" y="7.63636" width="12" height="18.9091"/>
+   </objectgroup>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="32" height="32"/>
+    <object id="2" x="0" y="0" width="32" height="32"/>
+    <object id="3" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="col" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJwLZGBgCBzFdAej9o/aP2r/qP2j9o/aP2r/wGEA0akxXQ==
+  </data>
+ </layer>
  <layer name="Tile Layer 1" width="32" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYKQA8wIxMwWYnUIsBsQcFOCBtp+SsKdG+OuTiVmhWBSI2SjATGRiNTrZLwnE0hTYD9NPrv2aQKwNNUcKyS3E2g/TT679slCsCMRKQKxMov0w/ZTaD/KHFtQv9LRfFYplkTAp9sPyOan2ywGxAhZ3qJJoP7npH2S+BpoYcl6gtf16QGyAJkZO+FOa/weT/fSM/8FS/tLafgAAOxR2
+   eJzl1T0LgCAQgGEtrJbGGisEw6n6/7+uCzyIS0g7xaHhGVp6u+tLCiEkQw9qhpZpBB1D6T5n9yn2r8D+gXIG0DBYUEXQzlqgrwv29Y/7tJ2j72tcjIPHeE2hfXzPQvoTmInF047px8yP57yzZA8mQx/n28TzO3OQ+5Fjft9+36TuhzRz7T9m7tTzX+egz3yIVP+fEy4fGbQ=
+  </data>
+ </layer>
+ <layer name="wallcol" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU4AKBUDzQ+pHxqP30sx+bOwYCDLT9gwEMtP8H2v5RQH0AAHskCxQ=
+  </data>
+ </layer>
+ <layer name="Wall" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU4AKSQCw9gPo1gVgLiKWgmFSzQPq1KbBfFooVgVgJiJXJ1E+p/bBwINUvlNqPbg41zBqK9g8GQGleohSM9PAfjgAA4CoERw==
   </data>
  </layer>
  <layer name="ch_test" width="32" height="18">
   <data encoding="base64" compression="zlib">
    eJztwQEBAAAAgiD/r25IQAEAfBkJAAAB
-  </data>
- </layer>
- <layer name="col" width="32" height="18">
-  <data encoding="base64" compression="zlib">
-   eJyTYGBgkBjFA4ZHweAGlMYTtfSTm2ZG7adOPhvNswPv/5Fu/yigPgAAUcgMMQ==
   </data>
  </layer>
 </map>

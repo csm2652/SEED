@@ -9,14 +9,17 @@ public class PlayerAttack : MonoBehaviour {
     private bool enemyIsDie = false;
     private GameObject target=null;
     private PlayerStatus myStatus;
-   
 
+    private Vector3 cross;
     private Animator anim;
     private float betweenEnemyTan;
     private float betweenEnemyAngle;
     private Vector2 myAnglePos;
     private Vector2 enemyAnglePos;
+	private float myx_M_enex;
+	private float myy_M_eney;
 
+    public int characterNumber;
     public float AttackTime = 0.5f;
     public float myAtk =1;
     public float myHp = 100;
@@ -31,12 +34,13 @@ public class PlayerAttack : MonoBehaviour {
     void Awake() {
         target = null;
 
+		myStatus = GetComponentInParent<PlayerStatus> ();
         anim = GetComponentInParent<Animator>();
-        myAtk = GetComponentInParent<PlayerStatus>().getPlayerAtk();
-        myHp = GetComponentInParent<PlayerStatus>().getPlayerHp();
-        isDie = GetComponentInParent<PlayerStatus>().getIsDie();
+		myAtk = myStatus.pAttack;
+		myHp = myStatus.playerHp;
+		isDie = myStatus.isDie;
         myPos = GetComponentInParent<Transform>();
-
+		characterNumber = myStatus.charterIndex;
     }
 
     void Update() {
@@ -75,66 +79,86 @@ public class PlayerAttack : MonoBehaviour {
         }
     }
     void OnTriggerExit(Collider other) {
+		Debug.Log ("some is lost:" + other);
         EnemyInRange.Remove(other.gameObject);
-    }
 
+    }
+	float distanceToPoint(float x1, float y1, float x2, float y2){
+		return (float)Mathf.Sqrt (Mathf.Pow (x1 - x2, 2) + Mathf.Pow (y1 - y2, 2));
+	}
 
     void attack() {
-        {
+        
 
             foreach (GameObject tmp in EnemyInRange) {
-                Debug.Log(tmp);
-                Debug.Log(EnemyInRange.Count);
                 if (tmp != null) {
-                    if (minDistace > Vector3.Distance(myPos.position, tmp.transform.position)) {
-                        minDistace = Vector3.Distance(myPos.position, tmp.transform.position);
-                        target = tmp;
+                    if (target == null) {
+                        if (minDistace > Vector3.Distance(myPos.position, tmp.transform.position)) {
+                            minDistace = Vector3.Distance(myPos.position, tmp.transform.position);
+                            target = tmp;
+                        }
                     }
                 }
             }
-            
+
             minDistace = 10000f;
             if (!(anim.GetBool("iswalking"))) {
                 if (target != null) {
-                    if (Mathf.Abs(Vector3.Distance(myPos.position, target.GetComponent<Transform>().position)) < reach) {
+				if (distanceToPoint(myPos.position.x, myPos.position.y, 
+					target.GetComponent<Transform>().position.x, target.GetComponent<Transform>().position.y) < reach) {
 //                        Debug.Log(Mathf.Abs(Vector3.Distance(myPos.position, target.GetComponent<Transform>().position)));
-                        EnemyStatus enemy = target.GetComponent<EnemyStatus>();
+                   EnemyStatus enemy = target.GetComponent<EnemyStatus>();
                         /*locationOfEnemy = ((target.transform.position - myPos.position).magnitude /
                             (target.transform.position - myPos.position).y);*/
 
-                        myAnglePos = new Vector2(myPos.position.x, myPos.position.y);
-                        enemyAnglePos = new Vector2(target.transform.position.x, target.transform.position.y);
-                        Debug.Log("myPos:  " + myPos.position + "enemyPos: " + enemyAnglePos);
-                        float reverse = 1/(enemyAnglePos.x - myAnglePos.x);
-                        betweenEnemyTan = (enemyAnglePos.y - myAnglePos.y) * reverse;
-                        Debug.Log("angle: " + betweenEnemyTan);
+                    myAnglePos = new Vector2(myPos.position.x, myPos.position.y);
+                    enemyAnglePos = new Vector2(target.transform.position.x, target.transform.position.y);
+					myx_M_enex = myAnglePos.x - enemyAnglePos.x;
+					myy_M_eney = myAnglePos.y - enemyAnglePos.y;
+                    // float reverse = 1/(enemyAnglePos.x - myAnglePos.x);
+                      //  betweenEnemyTan = (enemyAnglePos.y - myAnglePos.y) * reverse;
+
                       
-                      
-                        Vector3 cross = Vector3.Cross(myAnglePos, enemyAnglePos);
+                        cross = Vector3.Cross(myAnglePos, enemyAnglePos);
                           
                         anim.SetBool("Front_Attack", false);
                         anim.SetBool("Back_Attack", false);
                         anim.SetBool("Right_Attack", false);
                         anim.SetBool("Left_Attack", false);
 
-                        if (cross.z < 0) {
-                            if (0 <= betweenEnemyTan && betweenEnemyTan <= 1)
-                                anim.SetBool("Right_Attack", true);
-                            if (betweenEnemyTan <= -1 || betweenEnemyTan > 1)
-                                anim.SetBool("Front_Attack", true);
-                            if (-1 <= betweenEnemyTan && betweenEnemyTan < 0)
-                                anim.SetBool("Left_Attack", true);
-                        } 
-                        else {
-                            if (-1 < betweenEnemyTan &&  betweenEnemyTan <= 0 )
-                                anim.SetBool("Right_Attack", true);
-                            if (1 < betweenEnemyTan || -1 > betweenEnemyTan)
-                                anim.SetBool("Back_Attack", true);
-                         
-                            if(0 < betweenEnemyTan && betweenEnemyTan <= 1)
-                                anim.SetBool("Left_Attack", true);
-                        }
-                        enemy.getDamaged(myAtk);
+
+					if (myx_M_enex > 0) {
+						//enemy is left side
+						if (myy_M_eney > 0) {
+							if (Mathf.Abs (myx_M_enex) > Mathf.Abs (myy_M_eney)) {
+								anim.SetBool ("Left_Attack", true);
+							} else {
+								anim.SetBool ("Front_Attack", true);
+							}
+						} else {
+							if (Mathf.Abs (myx_M_enex) > Mathf.Abs (myy_M_eney)) {
+								anim.SetBool ("Left_Attack", true);
+							} else {
+								anim.SetBool ("Back_Attack", true);
+							}
+						}
+					} else {
+						if (myy_M_eney > 0) {
+							if (Mathf.Abs (myx_M_enex) > Mathf.Abs (myy_M_eney)) {
+								anim.SetBool ("Right_Attack", true);
+							} else {
+								anim.SetBool ("Front_Attack", true);
+							}
+						} else {
+							if (Mathf.Abs (myx_M_enex) > Mathf.Abs (myy_M_eney)) {
+								anim.SetBool ("Right_Attack", true);
+							} else {
+								anim.SetBool ("Back_Attack", true);
+							}
+						}
+					}                        
+						attackSound (characterNumber);
+                        enemy.getDamaged(myAtk,characterNumber);
                         //why attack motion is weird? -> Vector2.Angle return the degree of two vector based on (0,0), We want the angle based on Character position not ZeroPoint  
 
                     }
@@ -142,8 +166,18 @@ public class PlayerAttack : MonoBehaviour {
             }
 
 
-        }
+        
     }
+	void attackSound(int charindex){
+		if(charindex == 0)
+			GameObject.Find ("DF_Attack").GetComponent<AudioSource> ().Play ();
+		if(charindex == 1)
+			GameObject.Find ("MD_Attack").GetComponent<AudioSource> ().Play ();
+		if(charindex == 2)
+			GameObject.Find ("SD_Attack").GetComponent<AudioSource> ().Play ();
+		if(charindex == 3)
+			GameObject.Find ("ZL_Attack").GetComponent<AudioSource> ().Play ();
+	}
 
     void updateList() {
         int max = EnemyInRange.Count;
